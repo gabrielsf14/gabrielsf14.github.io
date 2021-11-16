@@ -17,7 +17,7 @@
               for (var key2 in data[key]) {
                 if (data[key].hasOwnProperty(key2)) {
                   var reviewData = data[key][key2];
-                  text += `<b>Usuário:</b> ${reviewData['user_email']}  <b>Nota:</b> ${reviewData['rating']} <b>Comentário:</b> ${reviewData['comment']}<br><br>`
+                  text += `<b>Usuário:</b> ${reviewData['user_email']} | <b>Nota:</b> ${reviewData['rating']} | <b>Comentário:</b> ${reviewData['comment']}<br><br>`
                   count++;
                   sum += reviewData['rating']
                 }
