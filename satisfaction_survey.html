@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+  </head> 
+  <body>
+    <div class="mypanel"></div>
+
+    <script>
+    $.getJSON('https://ally-316d5.firebaseio.com/satisfaction_survey.json', function(data) {
+        var text = '';
+        var avg = 0;
+        var sum = 0;
+        var count = 0;
+        for (var key in data) {
+          if (data.hasOwnProperty(key)) {
+              for (var key2 in data[key]) {
+                if (data[key].hasOwnProperty(key2)) {
+                  var reviewData = data[key][key2];
+                  text += `<b>Usuário:</b> ${reviewData['user_email']}  <b>Nota:</b> ${reviewData['rating']} <b>Comentário:</b> ${reviewData['comment']}<br><br>`
+                  count++;
+                  sum += reviewData['rating']
+                }
+              }
+          }
+        }
+        avg = sum / count;
+        $(".mypanel").html("<b>Número de avaliações: </b>" + count + "<br><b>Média das notas: </b>" + avg + "<br>------------------------------------------------------------<br><br><b>Lista de avaliações:</b><br><br>" + text);
+    });
+    </script>
+
+  </body>
+</html>
